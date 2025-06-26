@@ -1,0 +1,8 @@
+﻿dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet add package Microsoft.EntityFrameworkCore.Tools
+
+dotnet ef dbcontext scaffold "Server=DESKTOP-KM9AHJM\SQLEXPRESS;Database=PAWCADB;Trusted_Connection=True;TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -o Models --context NewsDBContext
+ 
+dotnet tool install --global dotnet-ef
+dotnet tool update --global dotnet-ef

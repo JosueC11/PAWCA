@@ -1,0 +1,25 @@
+﻿USE [PAWCADB]
+GO
+
+/****** Object:  Table [dbo].[News]    Script Date: 26/6/2025 01:53:55 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[News](
+	[article_id] [nvarchar](100) NOT NULL,
+	[title] [nvarchar](200) NOT NULL,
+	[link] [nvarchar](255) NOT NULL,
+	[description] [nvarchar](255) NOT NULL,
+	[pubDate] [datetime2](7) NOT NULL,
+	[image_url] [nvarchar](255) NOT NULL,
+	[favorite] [bit] NOT NULL,
+	[comment] [nvarchar](1000) NOT NULL,
+ CONSTRAINT [PK_News] PRIMARY KEY CLUSTERED 
+(
+	[article_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO

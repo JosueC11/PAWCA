@@ -1,0 +1,6 @@
+@PAWCA.API_HostAddress = http://localhost:5239
+
+GET {{PAWCA.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
