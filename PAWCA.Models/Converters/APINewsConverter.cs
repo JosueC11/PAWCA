@@ -10,19 +10,36 @@ namespace PAWCA.Models.Converters
 {
     public class APINewsConverter
     {
-        public static IEnumerable<News> NewsAPIToNews(APINewsResponse entity)
+        public static IEnumerable<News> NewsAPIToNews(APINewsResponse entity, bool isLoading)
         {
-            return entity.Results.Select(news => new News
+            if (isLoading)
             {
-                ArticleId = news.ArticleId,
-                Title = news.Title,
-                Link = news.Link,
-                Description = news.Description,
-                PubDate = news.PubDate,
-                ImageUrl = news.ImageUrl,
-                Favorite = false, 
-                Comment = string.Empty
-            });
+                return entity.Results.Select(news => new News
+                {
+                    ArticleId = news.ArticleId,
+                    Title = news.Title,
+                    Link = news.Link,
+                    Description = news.Description,
+                    PubDate = news.PubDate,
+                    ImageUrl = news.ImageUrl,
+                    Favorite = false,
+                    Comment = string.Empty
+                });
+            }
+            else
+            {
+                return entity.Results.Select(news => new News
+                {
+                    ArticleId = news.ArticleId,
+                    Title = news.Title,
+                    Link = news.Link,
+                    Description = news.Description,
+                    PubDate = news.PubDate,
+                    ImageUrl = news.ImageUrl,
+                    Favorite = true,
+                    Comment = string.Empty
+                });
+            }          
         }
     }
 }

@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Factory\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\PAWCA.Data\PAWCA.Data.csproj" />
     <ProjectReference Include="..\PAWCA.Models\PAWCA.Models.csproj" />
   </ItemGroup>

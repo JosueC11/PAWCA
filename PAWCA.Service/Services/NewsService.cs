@@ -34,11 +34,11 @@ namespace PAWCA.Service.Services
             return entities;
         }
 
-        public async Task<IEnumerable<News>> GetAllNewsServiceAsync()
+        public async Task<IEnumerable<News>> GetAllNewsServiceAsync(bool isLoading)
         {
             var result = await _restProvider.GetAsync("https://newsdata.io/api/1/latest?apikey=pub_b31590d324fa46aca7bad9c3d365bccf", null);
             var entities = await JsonProvider.DeserializeAsync<APINewsResponse>(result);
-            var news = APINewsConverter.NewsAPIToNews(entities);
+            var news = APINewsConverter.NewsAPIToNews(entities, isLoading);
             return news;
         }
 
@@ -55,9 +55,9 @@ namespace PAWCA.Service.Services
             return true;
         }
 
-        public async Task<bool> FavoriteEdit(News entity)
+        public async Task<bool> FavoriteEdit(IEnumerable<News> entities)
         {
-            var content = JsonProvider.Serialize(entity);
+            var content = JsonProvider.Serialize(entities);
             var result = await _restProvider.PostAsync($"https://localhost:7264/NewsAPI/Favorite", content);
             return true;
         }
@@ -65,7 +65,7 @@ namespace PAWCA.Service.Services
         public async Task<IEnumerable<News>> ValidateFavorite()
         {
             var FavoritesNews = await GetAllNewsAsync(); 
-            var allNewsService = await GetAllNewsServiceAsync();
+            var allNewsService = await GetAllNewsServiceAsync(true);
 
             var favoriteIds = FavoritesNews.Select(f => f.ArticleId).ToHashSet();
 

@@ -11,10 +11,10 @@ namespace PAWCA.Service.Services.Interfaces
     {
         Task<News> GetNewByIdAsync(string id);
         Task<IEnumerable<News>> GetAllNewsAsync();
-        Task<IEnumerable<News>> GetAllNewsServiceAsync();
+        Task<IEnumerable<News>> GetAllNewsServiceAsync(bool isLoading);
         Task<bool> DeleteNewAsync(string id);
         Task<bool> SaveNewAsync(IEnumerable<News> entities);
         Task<IEnumerable<News>> ValidateFavorite();
-        Task<bool> FavoriteEdit(News entity);
+        Task<bool> FavoriteEdit(IEnumerable<News> entity);
     }
 }

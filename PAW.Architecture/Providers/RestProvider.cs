@@ -73,17 +73,12 @@ public class RestProvider : IRestProvider
 	/// <param name="content">The content to send in the request body.</param>
 	/// <returns>A task that represents the asynchronous operation, containing the response as a string.</returns>
 	
-    public async Task<string> PostAsync(string endpoint, string? content)
+    public async Task<string> PostAsync(string endpoint, string content)
     {
         try
         {
-            var httpClient = RestProviderHelpers.CreateHttpClient(endpoint);
-
-            HttpContent? httpContent = content != null
-                ? RestProviderHelpers.CreateContent(content)
-                : null;
-
-            var response = await httpClient.PostAsync(endpoint, httpContent);
+            var response = await RestProviderHelpers.CreateHttpClient(endpoint)
+                .PostAsync(endpoint, RestProviderHelpers.CreateContent(content));
             var result = await RestProviderHelpers.GetResponse(response);
             return result;
         }

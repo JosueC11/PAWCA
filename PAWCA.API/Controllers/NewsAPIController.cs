@@ -30,9 +30,12 @@ namespace PAWCA.API.Controllers
 
         [Route("/NewsAPI/Favorite")]
         [HttpPost]
-        public async Task<bool> FavoriteEdit([FromBody] News entity)
+        public async Task<bool> FavoriteEdit([FromBody] IEnumerable<News> entities)
         {
-            await _manager.FavoriteEdit(entity);
+            foreach (var item in entities)
+            {
+                await _manager.FavoriteEdit(item);
+            }
             return true;
         }
 

@@ -86,16 +86,16 @@ namespace PAWCA.Web.Controllers
             {
                 if (page == "Index") 
                 {
-                    var newsService = await _service.GetAllNewsServiceAsync();
-                    var newx = newsService.FirstOrDefault(n => n.ArticleId == id);
-                    await _service.FavoriteEdit(newx);
+                    var newsService = await _service.GetAllNewsServiceAsync(false);
+                    var newx = newsService.FirstOrDefault(n => n.ArticleId == id)!;
+                    await _service.FavoriteEdit([newx]);
                     return RedirectToAction(nameof(Index));
                 }   
                 else
                 {
                     var news = await _service.GetAllNewsAsync();
                     var newx = news.FirstOrDefault(n => n.ArticleId == id)!;
-                    await _service.FavoriteEdit(newx);
+                    await _service.FavoriteEdit([newx]);
                     return RedirectToAction(nameof(Favorites));
                 }            
             }

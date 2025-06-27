@@ -1,7 +1,7 @@
 ﻿@model PAWCA.Models.ViewModels.NewsViewModel
 
 @{
-    ViewData["Title"] = "Edit your comments";
+    ViewData["Title"] = "Edit Comment";
 }
 
 <div class="container py-5">
@@ -9,7 +9,7 @@
         <div class="col-md-8 col-lg-7">
             <div class="card shadow rounded-4 border-0">
                 <div class="card-header bg-primary text-white text-center rounded-top-4">
-                    <h4 class="mb-0">Editar Comentario</h4>
+                    <h4 class="mb-0">Edit Comment</h4>
                 </div>
 
                 <div class="card-body p-4">
@@ -35,7 +35,7 @@
                             <label class="form-label fw-bold">Fecha de publicación</label>
                             <input type="text" class="form-control" value="@Model.PubDate.ToString("dd MMM yyyy")" readonly />
                         </div>
-                        <p>@Model.Comment</p>
+
                         <div class="mb-3">
                             <label asp-for="Comment" class="form-label fw-bold">Comentario</label>
                             <textarea asp-for="Comment" class="form-control" rows="5" placeholder="Escribe tu comentario aquí..."></textarea>
@@ -43,8 +43,8 @@
                         </div>
 
                         <div class="d-flex justify-content-end mt-4">
-                            <a asp-action="Index" class="btn btn-outline-secondary me-2">Cancelar</a>
-                            <button type="submit" class="btn btn-success">Guardar Comentario</button>
+                            <a asp-action="Favorites" class="btn btn-outline-secondary me-2">Cancel</a>
+                            <button type="submit" class="btn btn-success">Save Changes</button>
                         </div>
                     </form>
                 </div>

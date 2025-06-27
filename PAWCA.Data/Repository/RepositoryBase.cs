@@ -106,7 +106,8 @@ namespace PAWCA.Data.Repository
         {
             try
             {
-                return await _context.Set<T>().FindAsync(id);
+                var entities = await _context.Set<T>().FindAsync(id);
+                return entities;
             }
             catch (Exception ex)
             {

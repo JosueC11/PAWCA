@@ -8,20 +8,20 @@ namespace PAWCA.Models.ViewModels
 {
     public class NewsViewModel
     {
-        public string ArticleId { get; set; } = null!;
+        public string ArticleId { get; set; }
 
-        public string Title { get; set; } = null!;
+        public string Title { get; set; }
 
-        public string Link { get; set; } = null!;
+        public string Link { get; set; }
 
-        public string Description { get; set; } = null!;
+        public string Description { get; set; }
 
         public DateTime PubDate { get; set; }
 
-        public string ImageUrl { get; set; } = null!;
+        public string ImageUrl { get; set; }
 
         public bool Favorite { get; set; }
 
-        public string Comment { get; set; } = null!;
+        public string Comment { get; set; }
     }
 }
